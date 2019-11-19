@@ -30,15 +30,12 @@ public class MainPanel extends JPanel {
 	// Necessary variables
 	private final static String[] conversion_list = { "inches/cm", "Miles/Kilometres", "Pounds/Kilograms",
 			"Gallons/Litres", "Feet/Metres", "Celsius/Kelvin", "Acres/Hectare" };
-	private final static String[] reverse_conversion_list = { "cm/inches", "Kilometres/Miles", "Kilograms/Pounds",
-			"Litres/Gallons", "Metres/Feet", "Kelvin/Celsius", "Hectare/Acres" };
 	private JTextField txtfl_input;
 	private JLabel lbl_result;
 	private JLabel lbl_ccount;
 	private JComboBox<String> combo_actions;
 	JCheckBox chkbox_reverse;
 	private int ccount;
-	private DefaultComboBoxModel<String> model;
 
 	// Sets up Menubar and implement action listener
 	// Returns the Menubar
@@ -89,13 +86,10 @@ public class MainPanel extends JPanel {
 	// Constructor: Sets up the GUI and implement action listener for swing
 	// components
 	MainPanel() {
-		// Setting the vertical gap
-		setLayout(new FlowLayout());
 		ccount = 0;
 		ActionListener listener = new ConvertListener();
-		model = new DefaultComboBoxModel<String>(conversion_list);
 
-		combo_actions = new JComboBox<String>(model);
+		combo_actions = new JComboBox<String>(conversion_list);
 		combo_actions.setToolTipText("Available conversion units");
 		combo_actions.addActionListener(listener); // convert values when option changed
 
@@ -155,15 +149,6 @@ public class MainPanel extends JPanel {
 			String lbl = "Conversion: ";
 			double value = 0.0;
 			double result = 0.0;
-
-			// Set the combobox items
-			if (chkbox_reverse.isSelected()) {
-				model = new DefaultComboBoxModel<String>(reverse_conversion_list);
-				combo_actions.setModel(model);
-			} else {
-				model = new DefaultComboBoxModel<String>(conversion_list);
-				combo_actions.setModel(model);
-			}
 
 			if ((event.getSource() == combo_actions || event.getSource() == chkbox_reverse) && text.isEmpty()) {
 			}
