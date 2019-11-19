@@ -6,13 +6,11 @@
  */
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -44,7 +42,9 @@ public class MainPanel extends JPanel {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu mn_file = new JMenu("File");
+		mn_file.setToolTipText("File menu");
 		JMenu mn_help = new JMenu("Help");
+		mn_help.setToolTipText("Help menu");
 
 		// Setup shortcut keys
 		mn_file.setMnemonic(KeyEvent.VK_F4);
@@ -54,17 +54,20 @@ public class MainPanel extends JPanel {
 		menuBar.add(mn_help);
 
 		JMenuItem item_exit = new JMenuItem("Exit");
+		item_exit.setToolTipText("Exit the program");
 		mn_file.add(item_exit);
 
 		JMenuItem item_about = new JMenuItem("About");
+		item_about.setToolTipText("Display information about the program");
 		mn_help.add(item_about);
 
 		item_about.addActionListener(new ActionListener() { // Show message dialog about our information.
+			String about = "This application converts distance, weight, volume, temperature and area.\n"
+					+ "Author Dipesh B.C.\n" + "Copyright © 2019 B.C.softwares.";
+
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				JOptionPane.showMessageDialog(null,
-						"This is a test about\n" + "@Copyright 2019-2020 B.C. softwares all right reserved.", "About",
-						JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, about, "About", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 
@@ -90,17 +93,17 @@ public class MainPanel extends JPanel {
 		ActionListener listener = new ConvertListener();
 
 		combo_actions = new JComboBox<String>(conversion_list);
-		combo_actions.setToolTipText("Available conversion units");
+		combo_actions.setToolTipText("Available conversion modes");
 		combo_actions.addActionListener(listener); // convert values when option changed
 
 		JLabel inputLabel = new JLabel("Enter value:");
 
 		JButton btn_convert = new JButton("Convert");
-		btn_convert.setToolTipText("Click here to convert the value inside the textfield");
+		btn_convert.setToolTipText("Button to convert the value inside the textfield");
 		btn_convert.addActionListener(listener); // convert values when pressed
 
 		JButton btn_clear = new JButton("Clear");
-		btn_clear.setToolTipText("Click here to clear the textfield and reset the counter convertion");
+		btn_clear.setToolTipText("Button to clear the textfield and output labels");
 		btn_clear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent ae) {
@@ -112,16 +115,16 @@ public class MainPanel extends JPanel {
 		});
 
 		chkbox_reverse = new JCheckBox("Reverse conversion");
-		chkbox_reverse.setToolTipText("Reverse the conversion");
+		chkbox_reverse.setToolTipText("Reverse the conversion mode, for e.g. inches/cm to cm/inches");
 		chkbox_reverse.setBackground(Color.LIGHT_GRAY);
 		chkbox_reverse.addActionListener(listener);
 
 		lbl_result = new JLabel("---");
-		lbl_result.setToolTipText("convert value");
+		lbl_result.setToolTipText("converted value");
 		lbl_ccount = new JLabel("---");
 		lbl_ccount.setToolTipText("conversion count");
 		txtfl_input = new JTextField(5);
-		txtfl_input.setToolTipText("Input value here to convert");
+		txtfl_input.setToolTipText("Input value to convert");
 		txtfl_input.addActionListener(listener);
 
 		add(chkbox_reverse);

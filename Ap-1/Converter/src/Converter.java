@@ -9,7 +9,7 @@ public class Converter {
 
 	public static void main(String[] args) {
 
-		JFrame frame = new JFrame("Unit Converter");
+		JFrame frame = new JFrame("Metric Converter");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		MainPanel panel = new MainPanel();
