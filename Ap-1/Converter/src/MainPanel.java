@@ -248,7 +248,7 @@ public class MainPanel extends JPanel {
 					// Sets up value for JLabel
 					lbl_result.setText(df.format(result));
 					lbl_ccount.setText(lbl + Integer.toString(ccount));
-					
+
 				} catch (NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Only numbers allowed", "Error: " + ex.getMessage(),
 							JOptionPane.ERROR_MESSAGE);
