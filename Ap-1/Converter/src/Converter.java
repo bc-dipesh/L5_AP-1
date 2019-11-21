@@ -3,12 +3,14 @@ import javax.swing.JFrame;
 /**
  * The main driver program for the GUI based conversion program.
  * 
- * @author mdixon
+ * @author Dipesh B.C.
  */
 public class Converter {
 
+	// Sets up the GUI and displays the frame.
 	public static void main(String[] args) {
 
+		// Sets up frame and title for the frame.
 		JFrame frame = new JFrame("Metric Converter");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
