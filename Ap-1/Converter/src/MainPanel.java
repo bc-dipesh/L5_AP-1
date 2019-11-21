@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.text.DecimalFormat;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -55,10 +56,12 @@ public class MainPanel extends JPanel {
 
 		JMenuItem item_exit = new JMenuItem("Exit");
 		item_exit.setToolTipText("Exit the program");
+		item_exit.setIcon(new ImageIcon("Icons/exit.png"));
 		mn_file.add(item_exit);
 
 		JMenuItem item_about = new JMenuItem("About");
 		item_about.setToolTipText("Display information about the program");
+		item_about.setIcon(new ImageIcon("Icons/about.png"));
 		mn_help.add(item_about);
 
 		item_about.addActionListener(new ActionListener() { // Show message dialog about our information.
