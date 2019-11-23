@@ -29,8 +29,8 @@ public class MainPanel extends JPanel {
 	/**
 	 * Instance variables to help setup the GUI
 	*/
-	private final static String[] conversion_list = { "inches/cm", "Miles/Kilometres", "Pounds/Kilograms",
-			"Gallons/Litres", "Feet/Metres", "Celsius/Kelvin", "Acres/Hectare" };
+	private final static String[] conversion_list = { "Miles/Nautical Miles", "Acres/Hectares", "Miles per hour/Kilometres per hour",
+			"Yards/Metres", "Celsisu/Fahrenheit", "Degrees/Radians" };
 	private JTextField txtfl_input;
 	private JLabel lbl_result;
 	private JLabel lbl_ccount;
@@ -59,7 +59,7 @@ public class MainPanel extends JPanel {
 
 		// Setup ActionListener for JMenuItem
 		item_about.addActionListener(new ActionListener() { // Show message dialog about our information.
-			String about = "This application converts distance, weight, volume, temperature and area.\n"
+			String about = "This application converts distance, temperature and area.\n"
 					+ "Author Dipesh B.C.\n" + "Copyright © 2019 B.C.softwares.";
 
 			@Override
@@ -71,7 +71,7 @@ public class MainPanel extends JPanel {
 		item_exit.addActionListener(new ActionListener() { // Show confirmation message dialog for quitting the program
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				int a = JOptionPane.showConfirmDialog(null, "Are you sure?");
+				int a = JOptionPane.showConfirmDialog(null, "Are you sure?", "Exit program", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
 
 				if (a == JOptionPane.YES_OPTION) {
 					System.exit(0);
@@ -109,7 +109,7 @@ public class MainPanel extends JPanel {
 	 * 
 	 */
 	MainPanel() {
-		// initiliza counter for totalConversion.
+		// initilize counter for totalConversion.
 		ccount = 0;
 
 		// Listener for btn_convert
@@ -151,7 +151,7 @@ public class MainPanel extends JPanel {
 
 		// Some extra functionality
 		// Setup ToolTipText
-		chkbox_reverse.setToolTipText("Reverse the conversion mode, for e.g. inches/cm to cm/inches");
+		chkbox_reverse.setToolTipText("Reverse the conversion mode, for e.g. Yards/Metres to Metres/Yards");
 		combo_actions.setToolTipText("Available conversion modes");
 		txtfl_input.setToolTipText("Input value to convert");
 		btn_convert.setToolTipText("Button to convert the value inside the textfield");
@@ -170,7 +170,7 @@ public class MainPanel extends JPanel {
 		add(lbl_ccount);
 
 		// Setup JPanel
-		setPreferredSize(new Dimension(800, 80));
+		setPreferredSize(new Dimension(780, 80));
 		setBackground(Color.LIGHT_GRAY);
 	}
 
@@ -205,28 +205,25 @@ public class MainPanel extends JPanel {
 					// Setup the correct factor/offset values depending on required conversion
 					switch (combo_actions.getSelectedIndex()) {
 
-					case 0: // inches/cm
-						factor = 2.54;
+					case 0: // miles/nautical miles
+						factor = 1 / 1.151;
 						break;
 
-					case 1: // Miles/Km
-						factor = 1.60934;
+					case 1: // Acres/Hectares
+					factor = 0.404686;
 						break;
-					case 2: // Pounds/Kilogram
-						factor = 0.453592;
+					case 2: // mph/kmh
+						factor = 1.609;
 						break;
-					case 3: // Gallons/Litre
-						factor = 3.78541;
+					case 3: // yards/metres
+						factor = 1 / 1.094;
 						break;
-					case 4: // Feet/Metres
-						factor = 0.3048;
+					case 4: // Celsius / Fahrenheit
+						factor = 9 / 5.0;
+						offset = 32;
 						break;
-					case 5: // Celsius/Kelvin
-						factor = 1;
-						offset = 273.15;
-						break;
-					case 6: // Acres/Hectares
-						factor = 0.404686;
+					case 5: // degrees/ radians
+						factor = Math.PI / 180;
 						break;
 					}
 
