@@ -3,13 +3,15 @@ import javax.swing.JFrame;
 /**
  * The main driver program for the GUI based conversion program.
  * 
- * @author mdixon
+ * @author Dipesh B.C.
  */
 public class Converter {
 
+	// Sets up the GUI and displays the frame.
 	public static void main(String[] args) {
 
-		JFrame frame = new JFrame("Unit Converter");
+		// Sets up frame and title for the frame.
+		JFrame frame = new JFrame("Metric Converter");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		MainPanel panel = new MainPanel();
@@ -18,6 +20,7 @@ public class Converter {
 
 		frame.getContentPane().add(panel);
 
+		frame.setResizable(false);
 		frame.pack();
 		frame.setVisible(true);
 	}

@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Converter",
+            "request": "launch",
+            "mainClass": "Converter",
+            "projectName": "Converter"
+        }
+    ]
+}
